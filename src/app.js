@@ -24,6 +24,9 @@ const removeAll = () => {
 }
 
 const appRoot = document.getElementById('app');
+
+const numbers = [55, 101, 1000];
+
 const renderApp = () => {
       // JSX - JavaScript XML
     const template = (
@@ -32,11 +35,15 @@ const renderApp = () => {
         {app.subtitle && <p>{app.subtitle}</p>}
         <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
         <p>{app.options.length}</p>
-        <button onClick={removeAll}>Remove All</button>
+        <button onClick={removeAll}>Remove All</button>   
         <ol>
-          <li>Item one</li>
-          <li>Item two</li>
+        {
+          app.options.map((option) => {
+            return <li key={option}>{option}</li>
+          })
+        }
         </ol>
+
         <form onSubmit={onFormSubmit}>
           <input type="text" name="option"/>
           <button>Add Option</button>
