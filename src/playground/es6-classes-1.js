@@ -5,15 +5,55 @@ class Person {
     }
     getGreeting() {
         //return 'Hi, I am ' + this.name + '!';
-        return `Hi. I am ${this.name}`;
+        return `Hi. I am ${this.name}.`;
     }
     getDescription() {
         return `${this.name} is ${this.age} year(s) old.`;
     }
 }
 
-const me = new Person('Michael Wilson', 29);
-console.log(me.getDescription());
+class Student extends Person {
+    constructor(name, age, major) {
+        super(name, age);
+        this.major = major;
+    }
+    hasMajor() {
+        return !!this.major;
+    }
+    getDescription() {
+        let description = super.getDescription();
 
-const other = new Person();
-console.log(other.getDescription());
+        if (this.hasMajor()) {
+            description += ` Their major is ${this.major}.`;
+        }
+
+        return description;
+    }
+}
+
+ 
+class Traveller extends Person {
+    constructor(name, age, homeLocation){
+        super(name, age);
+        this.homeLocation = homeLocation;
+    }
+    getGreeting() {
+        let greeting = super.getGreeting();
+        if(this.homeLocation) {
+            greeting += ` I'm visiting from ${this.homeLocation}.`;
+        }
+        return greeting;
+    }
+}
+
+// const me = new Student('Michael Wilson', 29, 'Marketing');
+// console.log(me.getDescription());
+
+// const other = new Student();
+// console.log(other.getDescription());
+
+const me = new Traveller('Michael Wilson', 29, 'Chicago');
+console.log(me.getGreeting());
+
+const other = new Traveller(undefined, undefined, 'Nowhere');
+console.log(other.getGreeting());
