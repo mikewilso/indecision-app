@@ -1,5 +1,3 @@
-const appRoot = document.getElementById('app');
-
 class VisibilityToggle extends React.Component {
     constructor(props) {
         super(props);
@@ -30,7 +28,7 @@ class VisibilityToggle extends React.Component {
     }
 }
 
-ReactDOM.render(<VisibilityToggle />, appRoot);
+ReactDOM.render(<VisibilityToggle />, document.getElementById('app'));
 
 
 
